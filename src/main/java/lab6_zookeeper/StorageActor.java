@@ -13,5 +13,6 @@ public class StorageActor extends AbstractActor {
                 .match(NextServer.class, mes -> {
                     this.servers.add(mes.getUrl());
                 })
+                .match
     }
 }
