@@ -5,6 +5,8 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
 
 import java.io.IOException;
 
@@ -14,5 +16,11 @@ public class Server {
         BasicConfigurator.configure();
         ActorSystem system = ActorSystem.create("routes");
         ActorRef storage = system.actorOf(Props.create(StorageActor.class));
+
+        Watcher empty = new Watcher() {
+            @Override
+            public void process(WatchedEvent watchedEvent) {
+            }
+        };
     }
 }
