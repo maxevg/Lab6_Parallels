@@ -18,6 +18,8 @@ import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
 
+import static akka.http.javadsl.server.Directives.*;
+
 public class Server {
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
@@ -40,6 +42,8 @@ public class Server {
     }
 
     private static Route createRoute(ActorRef storage, final Http http) {
-
+        return route(pathSingleSlash(() ->
+                parameter("url", url ->
+                        parameter("COUNT", count ->
     }
 }
