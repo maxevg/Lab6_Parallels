@@ -14,5 +14,7 @@ public class StorageActor extends AbstractActor {
                     this.servers.add(mes.getUrl());
                 })
                 .match(RandomServer.class, mes -> {
+                    
+                }
     }
 }
