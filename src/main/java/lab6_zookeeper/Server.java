@@ -56,6 +56,11 @@ public class Server {
             return completeWithFuture(
                     Patterns.ask(storage, new RandomServer(), Duration.ofSeconds(5))
                             .thenApply(req -> (String) req)
+                            .thenCompose(req -> {
+                                String singleRequestURL = "https://" + req + "/?url=" +
+                                        request.getUrl() + "&count=" + request.getCount();
+                                
+                            }
             )
         }
     }
