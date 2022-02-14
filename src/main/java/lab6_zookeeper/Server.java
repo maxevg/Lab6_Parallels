@@ -5,6 +5,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
+import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
@@ -41,7 +42,9 @@ public class Server {
         server.createServer("127.0.0.1:2181", "8080");
         final Flow<HttpRequest, HttpResponse, NotUsed> flow = createRoute(storage, http)
                 .flow(system, materializer);
-        
+        final CompletionStage<ServerBinding> binding = http.bindAndHandle(
+
+        );
 
     }
 
