@@ -45,7 +45,7 @@ public class Server {
                 .flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 flow,
-                ConnectHttp.toHost
+                ConnectHttp.toHost("localhost", )
                 materializer
         );
 
