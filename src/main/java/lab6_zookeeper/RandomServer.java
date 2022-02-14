@@ -1,2 +1,4 @@
-package lab6_zookeeper;public class RandomServer {
+package lab6_zookeeper;
+
+public class RandomServer {
 }
