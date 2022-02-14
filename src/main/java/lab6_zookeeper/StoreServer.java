@@ -9,5 +9,7 @@ public class StoreServer {
         this.servers = servers;
     }
 
-    
+    public List<String> getServers() {
+        return this.servers;
+    }
 }
