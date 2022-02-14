@@ -12,5 +12,8 @@ public class Request {
     public String getUrl() {
         return url;
     }
-    
+
+    public int getCount() {
+        return count;
+    }
 }
