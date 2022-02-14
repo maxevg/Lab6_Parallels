@@ -51,6 +51,7 @@ public class Server {
             return completeWithFuture(singleRequest(http, request.getUrl()));
         } else {
             request.countMinus();
+            
         }
     }
 
