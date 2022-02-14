@@ -42,7 +42,7 @@ public class Server {
     }
 
     private static Route check(ActorRef storage, final Http http,Request request) {
-        
+
     }
 
     private static Route createRoute(ActorRef storage, final Http http) {
