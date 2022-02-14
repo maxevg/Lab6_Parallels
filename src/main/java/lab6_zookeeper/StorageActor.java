@@ -10,5 +10,8 @@ public class StorageActor extends AbstractActor {
     public Receive createReceive() {
         return receiveBuilder()
                 .match(StoreServer.class, mes -> this.servers = mes.getServers())
+                .match(NextServer.class, mes -> {
+                    this.servers.add(mes.getUrl());
+                })
     }
 }
