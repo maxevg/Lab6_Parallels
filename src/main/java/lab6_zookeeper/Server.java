@@ -73,7 +73,7 @@ public class Server {
         } else {
             request.countMinus();
             return completeWithFuture(
-                    Patterns.ask(storage, new RandomServer(), Duration.ofSeconds(5))
+                    Patterns.ask(storage, new RandomServer(), Duration.ofSeconds(TIME_OUT_SEC))
                             .thenApply(req -> (String) req)
                             .thenCompose(req -> {
                                 String singleRequestURL = "https://" + req + "/?url=" +
