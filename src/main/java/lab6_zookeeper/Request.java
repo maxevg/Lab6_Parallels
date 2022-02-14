@@ -16,4 +16,8 @@ public class Request {
     public int getCount() {
         return count;
     }
+
+    public void countMinus() {
+        this.count--;
+    }
 }
