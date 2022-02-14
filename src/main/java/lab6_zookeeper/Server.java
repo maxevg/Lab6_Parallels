@@ -7,6 +7,7 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
 
@@ -22,6 +23,6 @@ public class Server {
             public void process(WatchedEvent watchedEvent) {
             }
         };
-        ZooKeeper zoo = new ZooKeeper()
+        ZooKeeper zoo = new ZooKeeper();
     }
 }
