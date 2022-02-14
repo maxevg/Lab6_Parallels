@@ -22,5 +22,6 @@ public class Server {
             public void process(WatchedEvent watchedEvent) {
             }
         };
+        ZooKeeper zoo = new ZooKeeper()
     }
 }
