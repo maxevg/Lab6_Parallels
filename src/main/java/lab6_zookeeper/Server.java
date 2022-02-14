@@ -3,6 +3,7 @@ package lab6_zookeeper;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import akka.http.javadsl.Http;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
@@ -23,8 +24,10 @@ public class Server {
             public void process(WatchedEvent watchedEvent) {
             }
         };
-        ZooKeeper zoo = new ZooKeeper();
+        ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 2500, empty);
+        final Http http = Http.get(system);
         ZooServer server = new ZooServer(zoo, storage);
         server.createServer("127.0.0.1:2181", "8080");
+
     }
 }
