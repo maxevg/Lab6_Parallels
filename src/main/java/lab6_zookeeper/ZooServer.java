@@ -5,6 +5,8 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
+import java.util.List;
+
 public class ZooServer implements Watcher {
     private ZooKeeper zoo;
     private ActorRef storage;
@@ -14,5 +16,8 @@ public class ZooServer implements Watcher {
         this.storage = storage;
     }
 
-    
+    private void sendServers() throws KeeperException, InterruptedException {
+        List<String> servers = zoo.getChildren("/servers", this);
+        storage.tell(new StoreServer(servers), ActorRef.noSender());
+    }
 }
