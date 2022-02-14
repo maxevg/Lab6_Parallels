@@ -1,6 +1,7 @@
 package lab6.zookeper;
 
 import java.io.IOException;
+import org.apache.zookeeper.KeeperException;
 
 public class Server {
 
