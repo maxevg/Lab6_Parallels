@@ -24,6 +24,6 @@ public class ZooServer implements Watcher {
     }
 
     public void process(WatchedEvent watchedEvent) {
-        
+        System.out.println(watchedEvent.toString());
     }
 }
