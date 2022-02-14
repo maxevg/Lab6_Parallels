@@ -8,6 +8,7 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import org.apache.log4j.BasicConfigurator;
@@ -17,6 +18,7 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.Directives.*;
@@ -52,7 +54,7 @@ public class Server {
         } else {
             request.countMinus();
             return completeWithFuture(
-
+                    Patterns.ask(storage, new RandomServer(), Duration.ofSeconds())
             )
         }
     }
