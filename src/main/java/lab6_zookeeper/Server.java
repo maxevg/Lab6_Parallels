@@ -26,6 +26,9 @@ import java.util.concurrent.CompletionStage;
 import static akka.http.javadsl.server.Directives.*;
 
 public class Server {
+    final private static String ZOO_HOST = "127.0.0.1:2181";
+    final private static int TIME_OUT = 2500;
+    final private static String LOCAL_HOST = "localhost";
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         BasicConfigurator.configure();
@@ -37,10 +40,10 @@ public class Server {
             public void process(WatchedEvent watchedEvent) {
             }
         };
-        ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 2500, empty);
+        ZooKeeper zoo = new ZooKeeper(ZOO_HOST, TIME_OUT, empty);
         final Http http = Http.get(system);
         ZooServer server = new ZooServer(zoo, storage);
-        server.createServer("127.0.0.1:2181", "8080");
+        server.createServer(ZOO_HOST, "8080");
         final Flow<HttpRequest, HttpResponse, NotUsed> flow = createRoute(storage, http)
                 .flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
