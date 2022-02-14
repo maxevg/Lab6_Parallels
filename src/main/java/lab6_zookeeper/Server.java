@@ -29,6 +29,8 @@ public class Server {
     final private static String ZOO_HOST = "127.0.0.1:2181";
     final private static int TIME_OUT = 2500;
     final private static String LOCAL_HOST = "localhost";
+    final private static String PORT = "8080";
+
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         BasicConfigurator.configure();
@@ -43,15 +45,15 @@ public class Server {
         ZooKeeper zoo = new ZooKeeper(ZOO_HOST, TIME_OUT, empty);
         final Http http = Http.get(system);
         ZooServer server = new ZooServer(zoo, storage);
-        server.createServer(ZOO_HOST, "8080");
+        server.createServer(ZOO_HOST, PORT);
         final Flow<HttpRequest, HttpResponse, NotUsed> flow = createRoute(storage, http)
                 .flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 flow,
-                ConnectHttp.toHost("localhost", Integer.parseInt("8080")),
+                ConnectHttp.toHost("localhost", Integer.parseInt(PORT)),
                 materializer
         );
-        System.out.println("Server online at http://" + "localhost" + ":" + "8080" + "/\nPress RETURN to stop...");
+        System.out.println("Server online at http://" + LOCAL_HOST + ":" + PORT + "/\nPress RETURN to stop...");
         System.in.read();
         binding
                 .thenCompose(ServerBinding::unbind)
