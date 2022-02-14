@@ -24,5 +24,7 @@ public class Server {
             }
         };
         ZooKeeper zoo = new ZooKeeper();
+        ZooServer server = new ZooServer(zoo, storage);
+        server.createServer();
     }
 }
