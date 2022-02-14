@@ -33,6 +33,7 @@ public class ZooServer implements Watcher {
     }
 
     public void createServer(String localhost, String port) throws KeeperException, InterruptedException {
-        zoo.create("/servers" + "/" + localhost + ":" + port,)
+        zoo.create("/servers" + "/" + localhost + ":" + port,
+                )
     }
 }
