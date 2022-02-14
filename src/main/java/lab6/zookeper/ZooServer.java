@@ -1,5 +1,6 @@
 package lab6.zookeper;
 
+import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 
 public class ZooServer implements {
