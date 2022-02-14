@@ -20,6 +20,7 @@ public class StorageActor extends AbstractActor {
                 .match(RandomServer.class, mes -> {
                     getSender().tell(this.getRandomServer(), ActorRef.noSender());
                 })
+                .build();
     }
     private String getRandomServer() {
         return this.servers.get(random.nextInt(servers.size()));
