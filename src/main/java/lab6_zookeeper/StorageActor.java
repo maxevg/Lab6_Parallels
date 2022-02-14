@@ -16,6 +16,6 @@ public class StorageActor extends AbstractActor {
                 })
                 .match(RandomServer.class, mes -> {
                     getSender().tell(this.getRandomServer(), ActorRef.noSender());
-                })
+                }
     }
 }
