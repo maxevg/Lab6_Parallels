@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class ZooServer implements Watcher {
+    final private static String SERVERS = "/servers";
     private ZooKeeper zoo;
     private ActorRef storage;
 
@@ -17,7 +18,7 @@ public class ZooServer implements Watcher {
     }
 
     private void sendServers() throws KeeperException, InterruptedException {
-        List<String> servers = zoo.getChildren("/servers", this);
+        List<String> servers = zoo.getChildren(SERVERS, this);
         storage.tell(new StoreServer(servers), ActorRef.noSender());
     }
 
@@ -31,7 +32,7 @@ public class ZooServer implements Watcher {
     }
 
     public void createServer(String localhost, String port) throws KeeperException, InterruptedException {
-        zoo.create("/servers" + "/" + localhost + ":" + port,
+        zoo.create(SERVERS + "/" + localhost + ":" + port,
                 port.getBytes(StandardCharsets.UTF_8),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL
