@@ -1,2 +1,4 @@
-package lab6.zookeper;public class ZooServer {
+package lab6.zookeper;
+
+public class ZooServer {
 }
