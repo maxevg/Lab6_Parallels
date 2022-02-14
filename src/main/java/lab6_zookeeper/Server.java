@@ -59,9 +59,9 @@ public class Server {
                             .thenCompose(req -> {
                                 String singleRequestURL = "https://" + req + "/?url=" +
                                         request.getUrl() + "&count=" + request.getCount();
-                                
-                            }
-            )
+                                return singleRequest(http, singleRequestURL);
+                            })
+            );
         }
     }
 
