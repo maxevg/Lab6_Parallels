@@ -54,7 +54,8 @@ public class Server {
         } else {
             request.countMinus();
             return completeWithFuture(
-                    Patterns.ask(storage, new RandomServer(), Duration.ofSeconds())
+                    Patterns.ask(storage, new RandomServer(), Duration.ofSeconds(5))
+                            .thenApply(req -> (String) req)
             )
         }
     }
