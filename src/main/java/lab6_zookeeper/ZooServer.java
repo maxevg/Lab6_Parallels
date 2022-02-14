@@ -36,6 +36,6 @@ public class ZooServer implements Watcher {
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL
         );
-        
+        storage.tell(new NextServer(localhost + ":" + port), ActorRef.noSender());
     }
 }
