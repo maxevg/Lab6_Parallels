@@ -1,11 +1,9 @@
 package lab6_zookeeper;
 
 import akka.actor.ActorRef;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class ZooServer implements Watcher {
@@ -34,6 +32,9 @@ public class ZooServer implements Watcher {
 
     public void createServer(String localhost, String port) throws KeeperException, InterruptedException {
         zoo.create("/servers" + "/" + localhost + ":" + port,
+                port.getBytes(StandardCharsets.UTF_8),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                
                 )
     }
 }
