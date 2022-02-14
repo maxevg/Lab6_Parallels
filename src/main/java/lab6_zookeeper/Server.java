@@ -42,14 +42,14 @@ public class Server {
 
     }
 
+    private static CompletionStage<HttpResponse> singleRequest(Http http, String url) {
+        return http.singleRequest(HttpRequest.create(url));
+    }
+
     private static Route check(ActorRef storage, final Http http,Request request) {
         if (request.getCount() == 0) {
             return completeWithFuture(singleRequest(http, request.getUrl()));
         }
-    }
-
-    private static CompletionStage<HttpResponse> singleRequest(Http http, String url) {
-        return http.singleRequest(HttpRequest.create(url));
     }
 
     private static Route createRoute(ActorRef storage, final Http http) {
