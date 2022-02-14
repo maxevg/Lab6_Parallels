@@ -35,6 +35,6 @@ public class ZooServer implements Watcher {
                 port.getBytes(StandardCharsets.UTF_8),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL
-                )
+        );
     }
 }
