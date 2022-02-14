@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="zookeeper-jute">
+    <CLASSES />
+    <JAVADOC>
+      <root url="file://$USER_HOME$/zookeeper/docs/apidocs/zookeeper-jute" />
+      <root url="file://$USER_HOME$/zookeeper/docs/apidocs/zookeeper-server" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
