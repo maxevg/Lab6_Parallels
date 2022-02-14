@@ -1,6 +1,7 @@
 package lab6_zookeeper;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class StorageActor extends AbstractActor {
                     this.servers.add(mes.getUrl());
                 })
                 .match(RandomServer.class, mes -> {
-                    
+                    getSender().tell(this.getRandomServer(), ActorRef.noSender());
                 }
     }
 }
