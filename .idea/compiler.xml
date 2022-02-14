@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Lab6_Parallels" />
+        <module name="zookeeper-labs" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Lab6_Parallels" target="1.8" />
+      <module name="zookeeper-labs" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
