@@ -7,5 +7,7 @@ public class NextServer {
         this.url = url;
     }
 
-    
+    public String getUrl() {
+        return url;
+    }
 }
