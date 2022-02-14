@@ -4,6 +4,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
+import akka.stream.ActorMaterializer;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
@@ -18,7 +19,7 @@ public class Server {
         BasicConfigurator.configure();
         ActorSystem system = ActorSystem.create("routes");
         ActorRef storage = system.actorOf(Props.create(StorageActor.class));
-
+        final ActorMaterializer materializer = ActorMaterializer.create(system);
         Watcher empty = new Watcher() {
             @Override
             public void process(WatchedEvent watchedEvent) {
@@ -28,7 +29,7 @@ public class Server {
         final Http http = Http.get(system);
         ZooServer server = new ZooServer(zoo, storage);
         server.createServer("127.0.0.1:2181", "8080");
-        
+
 
     }
 }
