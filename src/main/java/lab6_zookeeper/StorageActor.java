@@ -1,5 +1,7 @@
 package lab6_zookeeper;
 
-public class StorageActor {
+import akka.actor.AbstractActor;
+
+public class StorageActor extends AbstractActor {
     
 }
