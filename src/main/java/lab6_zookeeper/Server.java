@@ -30,6 +30,7 @@ public class Server {
     final private static int TIME_OUT = 2500;
     final private static String LOCAL_HOST = "localhost";
     final private static String PORT = "8080";
+    final private static String URL = "url";
 
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
@@ -84,7 +85,7 @@ public class Server {
 
     private static Route createRoute(ActorRef storage, final Http http) {
         return route(pathSingleSlash(() ->
-                parameter("url", url ->
+                parameter(URL, url ->
                         parameter("COUNT", count ->
                                 check(storage, http, new Request(url, count))
                         )
