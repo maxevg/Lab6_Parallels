@@ -25,6 +25,6 @@ public class Server {
         };
         ZooKeeper zoo = new ZooKeeper();
         ZooServer server = new ZooServer(zoo, storage);
-        server.createServer();
+        server.createServer("127.0.0.1:2181", );
     }
 }
