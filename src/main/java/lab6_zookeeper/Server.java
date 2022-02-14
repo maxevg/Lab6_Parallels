@@ -46,6 +46,8 @@ public class Server {
                 parameter("url", url ->
                         parameter("COUNT", count ->
                                 check(storage, http, new Request(url, count))
-                                
+                        )
+                )
+        ));
     }
 }

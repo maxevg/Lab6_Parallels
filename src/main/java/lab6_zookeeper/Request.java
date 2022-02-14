@@ -1,2 +1,4 @@
-package lab6_zookeeper;public class Request {
+package lab6_zookeeper;
+
+public class Request {
 }
